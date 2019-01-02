@@ -82,16 +82,20 @@ setInterval(function() {
 			  	if (suspectName != null) {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
-				     message.react("✅")
                      message.react("👍")
+                     message.react("✅")
+					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id <> '529818637843038220'
+					message.awaitReactions(filter)
+					 .then(message.delete())
+					 .catch(console.error);
 					 });
 			  	} else {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
                      message.react("👍")
                      message.react("✅")
-					const filter = (reaction, user) => reaction.emoji.name === '✅'
-					message.awaitReactions(filter, { time: 15000 })
+					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id <> '529818637843038220'
+					message.awaitReactions(filter)
 					 .then(message.delete())
 					 .catch(console.error);
 					 });
