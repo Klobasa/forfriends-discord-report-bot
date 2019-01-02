@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Sourcemod plugin and nodejs Discord bot to allow people to report things happening on the server",
   "main": "config.js",
+  "scripts": {
+    "start": "node config.js"
+  },
   "dependencies": {
     "dateformat": "^3.0.3",
     "discord.js": "^11.3.0",
