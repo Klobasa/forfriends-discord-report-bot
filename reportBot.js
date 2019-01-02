@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 var SteamIDMaker = require('steamid');
 var dateFormat = require('dateformat');
-var request = require("request");
+//var request = require("request");
 const client = new Discord.Client();
 var mysql      = require('mysql');
 var reportDB = mysql.createConnection({
@@ -11,8 +11,8 @@ var reportDB = mysql.createConnection({
   database : process.env.DATABASE
 });
 var reportsDB = process.env.REPORTSDB;
-var channelName = process.env.BLOCKEDDB;
-var blockedDB = process.env.CHANNEL;
+var channelName = process.env.CHANNEL;
+var blockedDB = process.env.BLOCKEDDB;
 var commandStr = "!ms";
 var SBconnected = false;
 var SteamAPIKey = process.env.STEAM_API;
@@ -51,16 +51,17 @@ client.on('ready', () => {
 		}
 		SBconnected = true;
 	});
-	refreshBlocked();
+	//refreshBlocked();
 	console.log("Bot ready!");
 });
+/*
 function refreshBlocked() {
 	reportDB.query(`SELECT * FROM ${blockedDB}`, function(error, results, fields){
 		if (!error) {
 			blocked = results;
 		}
 	});
-}
+}*/
 
 setInterval(function() {
 	if(SBconnected) {
@@ -89,7 +90,7 @@ setInterval(function() {
 	}
 }, 5000);
 
-
+/*
 client.on('message', message => {
 	var user = message.author;
 	if (message.channel == channelReport && isAdmin(user)) {
@@ -177,6 +178,7 @@ client.on('message', message => {
 		refreshBlocked();
 	} 
 });
+*/
 
 var filterInt = function(value) {
   if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
