@@ -93,26 +93,12 @@ setInterval(function() {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
                      message.react("👍")
-                     //message.react("✅")
-					message.react('👍').then(() => message.react('✅'));
+                     message.react("✅")
 
-const filter = (reaction, user) => {
-    return ['✅'].includes(reaction.emoji.name) && user.id === message.author.id;
-};
-
-message.awaitReactions(filter, { max: 2, time: 6000000, errors: ['time'] })
-    .then(collected => {
-        const reaction = collected.second();
-
-        if (reaction.emoji.name === '✅') {
-            message.reply('you reacted with a thumbs up.');
-        }
- 
-    })
-    .catch(collected => {
-        console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-        message.reply('you didn\'t react with neither a thumbs up, nor a thumbs down.');
-    });
+					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === '321968073861103616'
+message.awaitReactions(filter, { max: 2})
+  .then(message.delete())
+  .catch(console.error);
 					 });
 			  	}
 		  	}
