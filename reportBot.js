@@ -82,10 +82,10 @@ setInterval(function() {
 			  	if (suspectName != null) {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
-				     const thumbsup = client.emojis.find(emoji => emoji.name === "thumbsup");
-					 const thumbsdown = client.emojis.find(emoji => emoji.name === "thumbsdown");
-                     message.react("${thumbsup}")
-                     message.react("${thumbsdown}")
+				    // const thumbsup = client.emojis.find(emoji => emoji.name === "thumbsup");
+					// const thumbsdown = client.emojis.find(emoji => emoji.name === "thumbsdown");
+                     message.react("👍")
+                     message.react("👎")
 					 });
 			  	} else {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`);
