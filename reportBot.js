@@ -80,9 +80,9 @@ setInterval(function() {
 			  	var reason = results[i].reason;
 			  	var dateOf = results[i].dateOf;
 			  	if (suspectName != null) {
-			  		channelReport.send(`**New Report!** ${admin}\n**Server**: ${serverName}\n**Connect**: steam://connect/${ipPort}\n**Date**: ${dateOf}\n**Reporter**: ${reporterName}\n**SteamID**: https://rep.tf/${reporterID} ${reporterID}\n**Suspect**: ${suspectName}\n**SteamID**: https://rep.tf/${suspectID} ${suspectID}\n**Reason**: ${reason}`);
+			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: https://rep.tf/${reporterID} ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: https://rep.tf/${suspectID} ${suspectID}\n**Důvod**: ${reason}`);
 			  	} else {
-			  		channelReport.send(`**New Report!** ${admin}\n**Server**: ${serverName}\n**Connect**: steam://connect/${ipPort}\n**Date**: ${dateOf}\n**Reporter**: ${reporterName}\n**SteamID**: https://rep.tf/${reporterID} ${reporterID}\n**Reason**: ${reason}`);
+			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: https://rep.tf/${reporterID} ${reporterID}\n**Důvod**: ${reason}`);
 			  	}
 		  	}
 		}
