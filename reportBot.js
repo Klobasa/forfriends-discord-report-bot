@@ -93,7 +93,7 @@ setInterval(function() {
 			const ayy = client.emojis.find(emoji => emoji.name === "thumbsup");
 			message.react("${ayy}");
 		}	
-	}
+	});
 }, 5000);
 
 /*
