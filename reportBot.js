@@ -3,25 +3,24 @@ var SteamIDMaker = require('steamid');
 var dateFormat = require('dateformat');
 var request = require("request");
 const client = new Discord.Client();
-var config = require('./config.js');
 var mysql      = require('mysql');
 var reportDB = mysql.createConnection({
-  host     : config.host,
-  user     : config.user,
-  password : config.password,
-  database : config.database
+  host     : process.env.HOST,
+  user     : process.env.USER,
+  password : process.env.PASSWORD,
+  database : process.env.DATABASE
 });
-var reportsDB = config.reportsDB;
-var channelName = config.channelName;
-var blockedDB = config.blockedDB;
-var commandStr = config.commandStr;
+var reportsDB = process.env.REPORTSDB;
+var channelName = process.env.BLOCKEDDB;
+var blockedDB = process.env.CHANNEL;
+var commandStr = "!ms";
 var SBconnected = false;
-var SteamAPIKey = config.SteamAPIKey;
+var SteamAPIKey = process.env.STEAM_API;
 
 var guild;
 var admin;
 var channelReport;
-var admins = config.admins;
+var admins = [];
 var blocked = [];
 
 function isAdmin(user) {
@@ -41,8 +40,8 @@ function isBlocked(ID) {
 	return false;
 }
 client.on('ready', () => {
-	guild = client.guilds.find("id",config.serverID);
-	admin = guild.roles.find("name", config.adminRole);
+	guild = client.guilds.find("id",process.env.SERVER_ID);
+	admin = guild.roles.find("name", process.env.ADMIN_ROLE);
 	channelReport = client.channels.find("name",channelName);
 	
 	reportDB.connect(function(err) {
@@ -186,4 +185,4 @@ var filterInt = function(value) {
 }
 
 
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
