@@ -80,7 +80,10 @@ setInterval(function() {
 			  	var reason = results[i].reason;
 			  	var dateOf = results[i].dateOf;
 			  	if (suspectName != null) {
-			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`);
+			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
+					 .then(function (message) {
+                     message.react("thumbsup")
+                     message.react("thumbsdown");
 			  	} else {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`);
 			  	}
@@ -88,12 +91,7 @@ setInterval(function() {
 		}
 		});
 	}
-	client.on("message", (message) => {
-		if (message.content.startsWith("Nový Report! ${admin}")) {
-			const ayy = client.emojis.find(emoji => emoji.name === "thumbsup");
-			message.react("${ayy}");
-		}	
-	});
+
 }, 5000);
 
 /*
