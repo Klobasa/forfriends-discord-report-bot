@@ -84,7 +84,7 @@ setInterval(function() {
 					 .then(function (message) {
                      message.react("👍")
                      message.react("✅")
-					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id != '529818637843038220'
+					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id !== '529818637843038220'
 					message.awaitReactions(filter)
 					 .then(message.delete())
 					 .catch(console.error);
@@ -94,7 +94,7 @@ setInterval(function() {
 					 .then(function (message) {
                      message.react("👍")
                      message.react("✅")
-					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id != '529818637843038220'
+					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id !== '529818637843038220'
 					message.awaitReactions(filter)
 					 .then(message.delete())
 					 .catch(console.error);
