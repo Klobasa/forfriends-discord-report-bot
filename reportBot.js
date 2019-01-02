@@ -89,7 +89,7 @@ setInterval(function() {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
                      message.react("👍")
-                     message.react(":white_check_mark:")
+                     message.react("✅")
 					// message.delete()
 					 });
 			  	}
