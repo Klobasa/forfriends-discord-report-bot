@@ -85,10 +85,10 @@ setInterval(function() {
 			  	} else {
 			  		let msg = channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`);
 			  	}
-			await msg.react("👍");
-            await msg.react("✅");
+			 msg.react("👍");
+             msg.react("✅");
 			
-			const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === "✅", {time: 150000});
+			const reactions =  msg.awaitReactions(reaction => reaction.emoji.name === "✅", {time: 150000});
 			message.channel.send(${reactions.get("✅").count-1});
 		  	}
 		}
