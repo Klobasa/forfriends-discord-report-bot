@@ -80,16 +80,19 @@ setInterval(function() {
 			  	var reason = results[i].reason;
 			  	var dateOf = results[i].dateOf;
 			  	if (suspectName != null) {
-			  		let msg = channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`);
-
+			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
+					 .then(function (message) {
+                     message.react("👍")
+                     message.react("✅")
+					 });
 			  	} else {
-			  		let msg = channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`);
+			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
+					 .then(function (message) {
+                     message.react("👍")
+                     message.react("✅")
+
+					 });
 			  	}
-			 msg.react("👍");
-             msg.react("✅");
-			
-			const reactions =  msg.awaitReactions(reaction => reaction.emoji.name === "✅", {time: 150000});
-			message.channel.send(`${"✅"}: ${reactions.get("✅").count-1}`);
 		  	}
 		}
 		});
