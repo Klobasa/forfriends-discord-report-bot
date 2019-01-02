@@ -82,15 +82,18 @@ setInterval(function() {
 			  	if (suspectName != null) {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
+				     message.react("✅")
                      message.react("👍")
-                     message.react("👎")
 					 });
 			  	} else {
 			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
 					 .then(function (message) {
                      message.react("👍")
                      message.react("✅")
-					// message.delete()
+					const filter = (reaction, user) => reaction.emoji.name === '✅'
+					message.awaitReactions(filter, { time: 15000 })
+					 .then(message.delete())
+					 .catch(console.error);
 					 });
 			  	}
 		  	}
@@ -98,6 +101,17 @@ setInterval(function() {
 		});
 	}
 
+	client.on("messageReactionAdd", (messageReaction, user) => {
+
+	if(message.content.includes(thisWord))
+	{
+		bot.sendMessage({
+			to: channelID,
+        message: "Your reply."
+		})
+	}
+
+	});
 }, 5000);
 
 /*
