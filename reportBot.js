@@ -80,27 +80,16 @@ setInterval(function() {
 			  	var reason = results[i].reason;
 			  	var dateOf = results[i].dateOf;
 			  	if (suspectName != null) {
-			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`)
-					 .then(function (message) {
-                     message.react("👍")
-                     //message.react("✅")
-					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === 529818637843038220
-					message.awaitReactions(filter)
-					 .then(message.delete())
-					 .catch(console.error);
-					 });
-			  	} else {
-			  		channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`)
-					 .then(function (message) {
-                     message.react("👍")
-                     message.react("✅")
+			  		let msg = channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Hráč**: ${suspectName}\n**SteamID**: ${suspectID}\n**Důvod**: ${reason}`);
 
-					const filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === '321968073861103616'
-message.awaitReactions(filter, { max: 2})
-  .then(message.delete())
-  .catch(console.error);
-					 });
+			  	} else {
+			  		let msg = channelReport.send(`**Nový Report!** ${admin}\n**Server**: ${serverName}\n**Připojit**: steam://connect/${ipPort}\n**Čas**: ${dateOf}\n**Nahlásil**: ${reporterName}\n**SteamID**: ${reporterID}\n**Důvod**: ${reason}`);
 			  	}
+			await msg.react("👍");
+            await msg.react("✅");
+			
+			const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === "✅", {time: 150000});
+			message.channel.send(${reactions.get(agree).count-1});
 		  	}
 		}
 		});
