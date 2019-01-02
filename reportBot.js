@@ -88,6 +88,10 @@ setInterval(function() {
 		}
 		});
 	}
+	if(message.content === "Nový Report! ${admin}") {
+		const ayy = client.emojis.find(emoji => emoji.name === "thumbsup");
+		message.react("${ayy}");
+	}
 }, 5000);
 
 /*
