@@ -89,7 +89,7 @@ setInterval(function() {
             await msg.react("✅");
 			
 			const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === "✅", {time: 150000});
-			message.channel.send(${reactions.get(agree).count-1});
+			message.channel.send(${reactions.get("✅").count-1});
 		  	}
 		}
 		});
