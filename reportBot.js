@@ -105,17 +105,6 @@ setInterval(function() {
 		});
 	}
 
-	client.on("messageReactionAdd", (messageReaction, user) => {
-
-	if(message.content.includes(thisWord))
-	{
-		bot.sendMessage({
-			to: channelID,
-        message: "Your reply."
-		})
-	}
-
-	});
 }, 5000);
 
 /*
